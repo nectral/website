@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veil by Nectral · Safe AI enablement, not AI blocking</title>
+  <meta name="description" content="Veil is a browser-native AI security platform. Discover shadow AI, stop sensitive data at the prompt with reversible redaction, and coach employees to sanctioned tools. SaaS, self-hosted, hybrid or air-gapped.">
+  <meta property="og:title" content="Veil · Safe AI enablement, not AI blocking">
+  <meta property="og:description" content="Discover every AI app your people use, redact secrets and personal data before prompts leave the device, and deploy wherever your data must stay.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Veil home">
+        <img src="assets/favicon.svg" alt="" width="28" height="28">
+        <span>Veil</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#why">Why Veil</a>
+        <a href="#deploy">Deployment</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-sm" href="#demo">Request a demo</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Browser-native AI usage security</p>
+          <h1>Let your people use AI.<br><span class="grad">Keep your data on the device.</span></h1>
+          <p class="lede">Veil discovers every AI app and agent your employees use, swaps secrets and personal data for placeholders before a prompt leaves the browser, and restores them in the answer. Security gets zero leakage. Employees keep the productivity.</p>
+          <div class="cta-row">
+            <a class="btn" href="#demo">Request a demo</a>
+            <a class="btn btn-ghost" href="#assessment">Get a free AI exposure assessment</a>
+          </div>
+          <ul class="hero-points">
+            <li>Runs in Chrome and Edge, no browser swap</li>
+            <li>Prompt content inspected on-device</li>
+            <li>SaaS, self-hosted, hybrid or air-gapped</li>
+          </ul>
+        </div>
+
+        <figure class="demo-card" aria-label="Example of reversible redaction">
+          <div class="demo-bar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="demo-url">chat.example-ai.com</span>
+            <span class="demo-badge" id="demo-badge">Veil · inspecting</span>
+          </div>
+          <div class="demo-body">
+            <div class="demo-label">What the employee typed</div>
+            <div class="bubble user mono" id="demo-typed">
+              Debug this call for customer <mark class="pii">Priya Sharma</mark> (PAN <mark class="pii">ABCPS1234K</mark>). It fails with key <mark class="secret">sk_live_51Hq…9xQ</mark>.
+            </div>
+            <div class="demo-label">What the AI app received</div>
+            <div class="bubble sent mono">
+              Debug this call for customer <span class="ph">[PERSON_1]</span> (PAN <span class="ph">[NATIONAL_ID_1]</span>). It fails with key <span class="ph">[API_KEY_1]</span>.
+            </div>
+            <div class="demo-label">What the employee sees back</div>
+            <div class="bubble ai">
+              The 401 for <strong class="restored">Priya Sharma</strong> means <strong class="restored">sk_live_51Hq…9xQ</strong> was revoked. Rotate it, then retry.
+            </div>
+          </div>
+          <figcaption class="demo-foot">Real values never leave the machine. They are restored locally in the response.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="section" id="problem">
+      <div class="wrap">
+        <p class="eyebrow">The problem</p>
+        <h2>AI already runs in your browsers. Security can't see it, and blocking it backfires.</h2>
+        <div class="grid grid-4">
+          <article class="card">
+            <div class="icon" aria-hidden="true">⇪</div>
+            <h3>Data leaks through prompts</h3>
+            <p>Source code, credentials, customer records and confidential files get pasted and uploaded into AI tools, many of which retain or train on inputs.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">◌</div>
+            <h3>Shadow AI is everywhere</h3>
+            <p>Thousands of AI apps exist, new ones launch weekly, and AI is embedded inside approved SaaS. Nobody has an inventory.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⌁</div>
+            <h3>Agents act on your behalf</h3>
+            <p>AI browsers, sidebars and extensions read whole pages. Hidden prompt-injection text can steer them into leaking data.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">⊘</div>
+            <h3>Blocking pushes AI underground</h3>
+            <p>Blanket bans send employees to personal devices and phones, where security has no visibility at all.</p>
+          </article>
+        </div>
+        <p class="note">Network DLP and CASB see domains, not prompts. Endpoint DLP struggles with chat-style web apps. Most AI security tools inspect your prompts in their cloud. Enterprise browsers mean replacing the browser.</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section alt" id="how">
+      <div class="wrap">
+        <p class="eyebrow">How it works</p>
+        <h2>One extension. One console. Four steps from blind spot to policy.</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-n">01</span>
+            <h3>Discover</h3>
+            <p>Force-install via your existing Chrome or Edge management. Within a day you see which AI apps, AI extensions and agents are in use, by whom and by department, each scored for data retention, training use and hosting region.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">02</span>
+            <h3>Inspect on-device</h3>
+            <p>Typed prompts, pastes, drag-and-drop and file uploads are checked in the browser for secrets, PII including national IDs, payment cards, source code, and your own keywords and patterns.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">03</span>
+            <h3>Redact, coach or redirect</h3>
+            <p>Choose the lightest action that works: allow, coach, warn with justification, redact, block, or redirect to your sanctioned AI tool. Reversible redaction keeps the answer useful.</p>
+          </li>
+          <li class="step">
+            <span class="step-n">04</span>
+            <h3>Govern and prove it</h3>
+            <p>Dashboards for usage, risk and coverage. Versioned policies with an audit-only simulation mode. High-severity events flow to Splunk, Sentinel or any syslog/CEF SIEM.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Differentiators -->
+    <section class="section" id="why">
+      <div class="wrap">
+        <p class="eyebrow">Why Veil</p>
+        <h2>Built for teams that can't send prompt data to a vendor cloud.</h2>
+        <div class="grid grid-3">
+          <article class="card feature">
+            <h3>Reversible redaction</h3>
+            <p>Sensitive values become placeholders before send and are restored in the response, locally. Employees get full AI value without the leak, which removes the productivity objection to DLP.</p>
+          </article>
+          <article class="card feature">
+            <h3>Local-first by design</h3>
+            <p>No prompt content leaves the device by default. Events carry rule IDs, counts and salted hashes, not raw values, which makes privacy and works-council reviews straightforward.</p>
+          </article>
+          <article class="card feature">
+            <h3>Deploy anywhere</h3>
+            <p>One codebase runs as SaaS, self-hosted, hybrid or fully air-gapped, so banks, insurers, healthcare and the public sector can adopt it on their terms.</p>
+          </article>
+          <article class="card feature">
+            <h3>Agentic AI controls</h3>
+            <p>Inventory AI extensions and flag risky permissions such as all-sites access. Detection of hidden prompt-injection content and AI-browser controls are on the roadmap.</p>
+          </article>
+          <article class="card feature">
+            <h3>Coach and redirect</h3>
+            <p>Short, clear in-page messages explain the policy and send people to the AI tools you already pay for, so sanctioned usage rises as shadow AI falls.</p>
+          </article>
+          <article class="card feature">
+            <h3>Audit-ready evidence</h3>
+            <p>Board-ready AI usage reports today, with compliance packs mapped to GDPR, India's DPDP Act, ISO/IEC 42001 and the EU AI Act on the roadmap.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deployment -->
+    <section class="section alt" id="deploy">
+      <div class="wrap">
+        <p class="eyebrow">Deployment</p>
+        <h2>Your data stays where your regulator wants it.</h2>
+        <p class="sub">The extension behaves identically in every mode. Only the console address pushed through browser policy changes.</p>
+        <div class="grid grid-4 deploy">
+          <article class="card">
+            <h3>SaaS</h3>
+            <p class="where">Our cloud, your choice of region</p>
+            <p>Fastest time to value with continuous updates. Best for mid-market teams.</p>
+          </article>
+          <article class="card">
+            <h3>Self-hosted</h3>
+            <p class="where">Your Kubernetes or a single-VM appliance</p>
+            <p>The same build, one tenant, upgraded with signed release bundles. No vendor engineers on site.</p>
+          </article>
+          <article class="card">
+            <h3>Hybrid</h3>
+            <p class="where">Data plane on-prem, control plane in our cloud</p>
+            <p>Keep every event in-house while still receiving live AI app catalog updates.</p>
+          </article>
+          <article class="card">
+            <h3>Air-gapped</h3>
+            <p class="where">Fully on-prem, no egress</p>
+            <p>Offline catalog, release bundles and license file for government, defense and critical infrastructure.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personas -->
+    <section class="section" id="who">
+      <div class="wrap">
+        <p class="eyebrow">Who it's for</p>
+        <h2>Invisible to employees. Indispensable to security.</h2>
+        <div class="grid grid-3 personas">
+          <div><h3>CISO</h3><p>A board-ready view of AI usage and risk, and proof it's under control without slowing the business.</p></div>
+          <div><h3>SOC analyst</h3><p>High-signal alerts with user, app and rule context, delivered into the SIEM you already triage in.</p></div>
+          <div><h3>IT admin</h3><p>Silent rollout through existing Chrome and Edge policy. No user action, low maintenance.</p></div>
+          <div><h3>DPO and compliance</h3><p>Exportable evidence of AI controls for auditors, regulators and customers.</p></div>
+          <div><h3>AI adoption lead</h3><p>Employees nudged toward sanctioned tools, with usage trends to show it working.</p></div>
+          <div><h3>Every employee</h3><p>Redaction instead of blocks, and a one-line justification when work truly needs it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap / sensors -->
+    <section class="section alt" id="platform">
+      <div class="wrap">
+        <p class="eyebrow">Beyond the browser</p>
+        <h2>One detection engine for every place data meets AI.</h2>
+        <p class="sub">The browser is the first sensor. The same rules, event schema, policies and console extend to new surfaces as they ship.</p>
+        <ul class="sensors">
+          <li><span class="tag tag-now">Available</span> Browser extension for AI web apps, extensions and sidebars</li>
+          <li><span class="tag">Roadmap</span> IDE extension for AI coding assistants</li>
+          <li><span class="tag">Roadmap</span> LLM API gateway for apps and pipelines</li>
+          <li><span class="tag">Roadmap</span> MCP and agent gateway</li>
+          <li><span class="tag">Roadmap</span> Cloud AI posture for AWS, Azure and GCP</li>
+          <li><span class="tag">Roadmap</span> SaaS AI connectors and desktop agent</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <p class="eyebrow">Pricing</p>
+        <h2>Start with visibility. Grow into control.</h2>
+        <p class="sub">Priced per user per year. Every plan is available in any deployment mode.</p>
+        <div class="grid grid-3 pricing">
+          <article class="card plan" id="assessment">
+            <h3>Discover</h3>
+            <p class="price">Free assessment</p>
+            <p class="plan-desc">A two-week, audit-only AI exposure assessment that ends with a board-ready report.</p>
+            <ul>
+              <li>Shadow AI discovery</li>
+              <li>AI extension inventory and risk flags</li>
+              <li>AI app risk scoring</li>
+              <li>AI exposure report</li>
+            </ul>
+            <a class="btn btn-ghost" href="#demo" data-plan="Discover">Start an assessment</a>
+          </article>
+          <article class="card plan featured">
+            <span class="ribbon">Most teams start here</span>
+            <h3>Protect</h3>
+            <p class="price">Contact us</p>
+            <p class="plan-desc">Stop sensitive data at the prompt without slowing anyone down.</p>
+            <ul>
+              <li>Everything in Discover</li>
+              <li>On-device inspection</li>
+              <li>Reversible redaction</li>
+              <li>Coach, warn, block and redirect</li>
+              <li>SIEM export and webhooks</li>
+              <li>SSO and role-based access</li>
+            </ul>
+            <a class="btn" href="#demo" data-plan="Protect">Talk to sales</a>
+          </article>
+          <article class="card plan">
+            <h3>Govern</h3>
+            <p class="price">Contact us</p>
+            <p class="plan-desc">Deep inspection and evidence for regulated environments.</p>
+            <ul>
+              <li>Everything in Protect</li>
+              <li>File content inspection</li>
+              <li>Exact data match</li>
+              <li>Agentic AI controls</li>
+              <li>Compliance report packs</li>
+              <li>Encrypted evidence capture</li>
+            </ul>
+            <a class="btn btn-ghost" href="#demo" data-plan="Govern">Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section alt" id="faq">
+      <div class="wrap narrow">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions security teams ask first</h2>
+        <details>
+          <summary>Does Veil see or store our employees' prompts?</summary>
+          <p>Not by default. Inspection happens in the browser. Events sent to the console contain rule IDs, counts and salted hashes rather than raw values. Evidence capture is an explicit, opt-in setting, encrypted and viewable only by a restricted role.</p>
+        </details>
+        <details>
+          <summary>Do we have to replace our browser?</summary>
+          <p>No. Veil is a Manifest V3 extension for Chrome and Edge, force-installed and configured through the browser management you already use. Firefox and Safari support is planned.</p>
+        </details>
+        <details>
+          <summary>How does reversible redaction keep answers useful?</summary>
+          <p>Sensitive values are replaced with consistent placeholders such as <code>[PERSON_1]</code> before the prompt is sent. The AI reasons over the placeholders, and Veil swaps the real values back into the response on the device, so the employee reads a normal answer.</p>
+        </details>
+        <details>
+          <summary>What happens if the console is unreachable?</summary>
+          <p>The extension keeps enforcing its cached, signed policy and queues events locally until it reconnects. It fails safe, not open.</p>
+        </details>
+        <details>
+          <summary>Can we run it with no internet access at all?</summary>
+          <p>Yes. The air-gapped mode runs fully on-prem with an offline AI app catalog, signed release bundles and an offline license file.</p>
+        </details>
+        <details>
+          <summary>What about desktop AI apps and phones?</summary>
+          <p>Veil starts in the browser, where most AI use happens. Desktop, IDE and API coverage are on the roadmap, and Veil is designed to sit alongside your SWG and endpoint DLP rather than replace them.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Demo / CTA -->
+    <section class="section cta" id="demo">
+      <div class="wrap cta-grid">
+        <div>
+          <p class="eyebrow">Request a demo</p>
+          <h2>See what AI your organization is really using.</h2>
+          <p class="lede">We're onboarding a small group of design partners in financial services, healthcare and IT services. Tell us a little about your team and we'll be in touch.</p>
+        </div>
+        <form class="form" id="demo-form" novalidate>
+          <div class="field">
+            <label for="f-name">Full name</label>
+            <input id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Work email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input id="f-company" name="company" autocomplete="organization" required>
+            </div>
+            <div class="field">
+              <label for="f-size">Employees</label>
+              <select id="f-size" name="size">
+                <option>Under 1,000</option>
+                <option selected>1,000 to 5,000</option>
+                <option>5,000 to 20,000</option>
+                <option>Over 20,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-interest">Interested in</label>
+            <select id="f-interest" name="interest">
+              <option>Discover (free AI exposure assessment)</option>
+              <option>Protect</option>
+              <option>Govern</option>
+              <option>Self-hosted or air-gapped deployment</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-msg">Anything we should know? <span class="opt">(optional)</span></label>
+            <textarea id="f-msg" name="message" rows="3"></textarea>
+          </div>
+          <button class="btn btn-block" type="submit">Request a demo</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand">
+        <img src="assets/favicon.svg" alt="" width="22" height="22">
+        <span>Veil</span>
+        <span class="by">by Nectral</span>
+      </div>
+      <p>Safe AI enablement, not AI blocking.</p>
+      <p class="copy">© <span id="year">2026</span> Nectral. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
