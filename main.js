@@ -26,7 +26,35 @@ links.addEventListener("click", (e) => {
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Hero redaction demo: reveal typed -> sent -> restored, then loop
+// Hero flow: highlight each stage in turn and cycle the action and policy rule
+(function flow() {
+  const nodes = document.querySelectorAll(".flow-node");
+  const acts = document.querySelectorAll("#flow-actions span");
+  const rule = document.getElementById("flow-rule");
+  if (!nodes.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const scenarios = [
+    { act: "redact", rule: "if app = unsanctioned and data = secret → redact" },
+    { act: "warn", rule: "if app = tolerated and data = customer PII → warn" },
+    { act: "block", rule: "if upload = Confidential and app ≠ sanctioned → block" },
+  ];
+  let stage = 0;
+  let scenario = 0;
+  function tick() {
+    nodes.forEach((n, i) => n.classList.toggle("active", i === stage));
+    if (stage === 2) {
+      const { act, rule: text } = scenarios[scenario];
+      acts.forEach((el) => el.classList.toggle("on", el.dataset.act === act));
+      rule.textContent = text;
+      scenario = (scenario + 1) % scenarios.length;
+    }
+    stage = (stage + 1) % nodes.length;
+    setTimeout(tick, 1400);
+  }
+  tick();
+})();
+
+// Redaction demo: reveal typed -> sent -> restored, then loop
 (function demo() {
   const body = document.querySelector(".demo-body");
   const badge = document.getElementById("demo-badge");
@@ -34,9 +62,9 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
   const parts = Array.from(body.children); // label, bubble pairs
   const stages = [
-    { show: 2, badge: "Veil · inspecting" },
-    { show: 4, badge: "Veil · 3 values redacted" },
-    { show: 6, badge: "Veil · restored locally" },
+    { show: 2, badge: "Nectral Observe · inspecting" },
+    { show: 4, badge: "3 values redacted" },
+    { show: 6, badge: "Restored locally" },
   ];
   let i = 0;
   function step() {
