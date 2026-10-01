@@ -257,6 +257,7 @@ textarea { resize: vertical; }
   .section { padding: 64px 0; }
   .grid-3, .grid-4, .steps, .sensors, .field-row { grid-template-columns: 1fr; }
   .form { padding: 20px; }
+  .rule { white-space: normal; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
