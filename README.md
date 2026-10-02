@@ -6,8 +6,8 @@ It is a plain static site: one HTML page, one stylesheet, one script, no build s
 
 ```
 index.html          page content and sections
-styles.css          all styling (dark theme, responsive down to phone width)
-main.js             mobile nav, hero redaction demo, demo-request form
+styles.css          all styling (light paper theme with a dark policy band, responsive to phone width)
+main.js             mobile nav and the book-a-demo email form
 assets/favicon.svg  logo mark and favicon
 ```
 
