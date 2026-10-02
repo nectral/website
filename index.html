@@ -4,302 +4,343 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Veil · AI data leak prevention in the browser</title>
-  <meta name="description" content="Veil is a browser extension that watches every prompt, paste and upload to AI tools and stops secrets, credentials, source code and personal data before they leave. One console sets the policy for everyone.">
+  <meta name="description" content="Veil is a browser extension that watches every prompt, paste and upload to AI tools, and stops secrets, credentials, source code and personal data before they leave. One console sets the policy for everyone.">
   <meta property="og:title" content="Veil · Use any AI. Leak nothing.">
   <meta property="og:description" content="Stop secrets, credentials, source code and personal data before they reach AI tools. One console sets the policy for every browser.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#F3F2EC">
+  <meta name="theme-color" content="#f3f2ec">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="nav" id="top">
-    <div class="wrap nav-inner">
-      <a class="brand" href="#top" aria-label="Veil home">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="#121314"/><rect x="6" y="9" width="16" height="3" rx="1.5" fill="#FF6A3D"/><rect x="6" y="16" width="10" height="3" rx="1.5" fill="#F3F2EC"/></svg>
-        <span>Veil</span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span></span><span></span>
-      </button>
-      <div id="nav-links" class="nav-links">
-        <nav aria-label="Primary" class="nav-menu">
-          <a href="#detect">What it catches</a>
-          <a href="#how">How it works</a>
-          <a href="#policy">Policies</a>
-          <a href="#deploy">Deployment</a>
-          <a href="#pricing">Pricing</a>
-        </nav>
-        <a class="btn btn-dark btn-sm" href="#demo">Book a demo</a>
-      </div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top"><i class="ph ph-shield-check" aria-hidden="true"></i>Veil</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+      <nav id="nav-links" class="nav-links" aria-label="Primary">
+        <a href="#detection">Detection</a>
+        <a href="#policies">Policies</a>
+        <a href="#console">Console</a>
+        <a href="#deploy">Deployment</a>
+        <a href="#faq">FAQ</a>
+        <a href="#access" class="btn btn-primary">Request early access</a>
+      </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <section class="wrap hero">
-      <div class="hero-copy">
-        <div class="pill"><span class="dot-accent"></span>AI data leak prevention, in the browser</div>
-        <h1>Use any AI.<br>Leak nothing.</h1>
-        <p class="lede">Veil is a browser extension that watches every prompt, paste and upload to AI tools, and stops secrets, credentials, source code and personal data before they leave. One console sets the policy for everyone.</p>
-        <div class="cta-row">
-          <a class="btn btn-dark" href="#demo">Book a demo</a>
-          <a class="btn btn-outline" href="#demo">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-            Try the extension
-          </a>
-        </div>
-        <div class="hero-meta"><span>Chrome · Edge</span><span>SaaS or self-hosted</span><span>Deploys via MDM</span></div>
-      </div>
-
-      <div class="hero-visual" aria-label="Example: Veil holds an API key, an email address and source code before a prompt is sent">
-        <div class="browser">
-          <div class="browser-bar">
-            <span class="bdot"></span><span class="bdot"></span><span class="bdot"></span>
-            <span class="browser-url">ai-assistant.example.com</span>
+    <div class="wrap" id="top">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-copy">
+          <h1><span>Use any AI.</span><span class="accent">Leak nothing.</span></h1>
+          <p class="lede">Veil is a browser extension that watches every prompt, paste and upload to AI tools, and stops secrets, credentials, source code and personal data before they leave. One console sets the policy for everyone.</p>
+          <div class="cta-row">
+            <a href="#access" class="btn btn-primary btn-lg">Request early access</a>
+            <a href="#detection" class="btn btn-ghost btn-lg">See what it catches <i class="ph ph-arrow-down" aria-hidden="true"></i></a>
           </div>
-          <div class="browser-body">
-            <div class="msg-label">Your message</div>
-            <p class="msg">Deploy keeps failing for the billing service. Here’s the config. Key is
-              <span class="held">AKIA████████████7QXF</span>
-              and the on-call contact is
-              <span class="held">████@example.com</span>.</p>
-            <div class="code-block">
-              <div>// billing/charge.ts (internal repo)</div>
-              <div>export async function settle(acct) {</div>
-              <div class="held-line">  ████████ 41 lines held ████████</div>
-              <div>}</div>
+          <div class="hero-meta">
+            <span><i class="ph ph-browser" aria-hidden="true"></i>Chrome · Edge</span>
+            <span><i class="ph ph-cloud" aria-hidden="true"></i>SaaS or self-hosted</span>
+            <span><i class="ph ph-devices" aria-hidden="true"></i>Deploys via MDM</span>
+          </div>
+        </div>
+
+        <div class="demo" aria-label="Interactive example: what Veil does when sensitive data is about to be sent to an AI tool">
+          <div class="demo-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="demo-url" id="demo-site">chat.ai-assistant.com</div>
+            <i class="ph-fill ph-shield-check" aria-hidden="true"></i>
+          </div>
+          <div class="demo-body">
+            <div class="demo-tabs" role="group" aria-label="Example data">
+              <span class="label-caps">Try</span>
+              <button type="button" class="btn chip-btn is-on" data-sample="0" aria-pressed="true">API key</button>
+              <button type="button" class="btn chip-btn" data-sample="1" aria-pressed="false">Source code</button>
+              <button type="button" class="btn chip-btn" data-sample="2" aria-pressed="false">Customer PII</button>
+              <button type="button" class="btn chip-btn" data-sample="3" aria-pressed="false">File upload</button>
+            </div>
+            <div class="composer" id="composer">
+              <div class="file-pill" id="file-pill" hidden>
+                <i class="ph ph-file-csv" aria-hidden="true"></i>
+                <div><span id="file-name"></span><span class="file-meta" id="file-meta"></span></div>
+              </div>
+              <p class="composer-text"><span id="txt-before"></span><span class="match" id="txt-match"></span><span id="txt-after"></span></p>
+              <div class="send-row"><span id="send-state"><i class="ph ph-paper-plane-right" aria-hidden="true"></i><span id="send-label">Waiting for your choice</span></span></div>
+            </div>
+            <div class="banner" aria-live="polite">
+              <i id="banner-icon" class="ph-fill ph-warning" aria-hidden="true"></i>
+              <div class="banner-copy">
+                <div class="banner-head"><span id="banner-title">This looks sensitive</span><span class="tag tag-accent" id="banner-detector">AWS access key</span></div>
+                <p id="banner-body"></p>
+                <div class="banner-actions" id="banner-actions"></div>
+              </div>
+            </div>
+            <div class="mode-row">
+              <span class="label-caps">Policy response</span>
+              <div class="seg" role="group" aria-label="Policy response">
+                <button type="button" class="seg-opt is-on" data-mode="Warn" aria-pressed="true">Warn</button>
+                <button type="button" class="seg-opt" data-mode="Redact" aria-pressed="false">Redact</button>
+                <button type="button" class="seg-opt" data-mode="Block" aria-pressed="false">Block</button>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="intercept">
-          <div class="intercept-head">
-            <div class="intercept-title">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF6A3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="M9 12h6"/></svg>
-              <span>Veil held 3 items before send</span>
-            </div>
-            <span class="mono-dim">before send</span>
-          </div>
-          <ul class="intercept-list">
-            <li><span>AWS access key</span><span class="mono-dim">SECRET · redacted</span></li>
-            <li><span>Email address</span><span class="mono-dim">PII · redacted</span></li>
-            <li><span>Proprietary source code</span><span class="mono-dim">CODE · blocked</span></li>
-          </ul>
-          <div class="intercept-policy">Policy: Engineering · redact secrets &amp; PII, block internal code</div>
-          <div class="intercept-actions">
-            <button type="button" class="btn btn-accent btn-sm">Send redacted</button>
-            <button type="button" class="btn btn-ghost-dark btn-sm">Request exception</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Works with -->
-    <section class="band" aria-label="Supported AI tools">
-      <div class="wrap band-inner">
-        <span class="eyebrow">Covers the AI your team already uses</span>
+      <section class="coverage" aria-label="Supported AI tools">
+        <span class="label-caps">Covers the AI your team already uses</span>
         <div class="tools"><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Copilot</span><span>Perplexity</span><span>DeepSeek</span><span class="tools-more">+ unsanctioned AI apps</span></div>
-      </div>
-    </section>
-
-    <!-- What it catches -->
-    <section id="detect" class="wrap section">
-      <div class="split-head">
-        <h2>Everything that shouldn’t end up in a prompt.</h2>
-        <p class="sub">Veil inspects typed text, pastes and file uploads in real time, with detectors tuned for the data that actually leaks into AI.</p>
-      </div>
-      <div class="detect-grid">
-        <article class="detect">
-          <span class="num">01</span>
-          <h3>Secrets &amp; API keys</h3>
-          <p>Cloud keys, tokens, private keys and connection strings, caught by pattern and entropy.</p>
-          <code class="chip">sk_live_••••••••</code>
-        </article>
-        <article class="detect">
-          <span class="num">02</span>
-          <h3>Credentials</h3>
-          <p>Passwords, session cookies and auth headers pasted while debugging.</p>
-          <code class="chip">Authorization: Bearer ••••</code>
-        </article>
-        <article class="detect">
-          <span class="num">03</span>
-          <h3>Source code</h3>
-          <p>Proprietary code from your repositories, recognised even when it’s only a fragment.</p>
-          <code class="chip">repo: billing-core</code>
-        </article>
-        <article class="detect">
-          <span class="num">04</span>
-          <h3>Personal data (PII)</h3>
-          <p>Names, emails, phone numbers, national IDs and addresses of customers and staff.</p>
-          <code class="chip">+91 98•• •• ••21</code>
-        </article>
-        <article class="detect">
-          <span class="num">05</span>
-          <h3>Financial &amp; health records</h3>
-          <p>Card numbers, bank details and patient data covered by PCI and HIPAA rules.</p>
-          <code class="chip">4111 •••• •••• 1111</code>
-        </article>
-        <article class="detect">
-          <span class="num">06</span>
-          <h3>Your own identifiers</h3>
-          <p>Project codenames, customer lists, deal terms. Add custom dictionaries and patterns.</p>
-          <code class="chip">Project ORCHID</code>
-        </article>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- How it works -->
-    <section id="how" class="wrap section section-tight-top">
-      <div class="stack-head">
-        <span class="eyebrow">How it works</span>
-        <h2>Inspect at the keyboard. Decide by policy. See it all centrally.</h2>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#121314" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18"/><path d="M8 13h4"/></svg>
-          <h3>1. Inspect in the browser</h3>
-          <p>The extension reads prompts, pastes and uploads on AI sites the moment they happen, before anything is submitted.</p>
-        </div>
-        <div class="step">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#121314" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
-          <h3>2. Enforce the right action</h3>
-          <p>Block, redact, warn with a reason, or allow and log, per data type, per team, per AI app.</p>
-        </div>
-        <div class="step">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#121314" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg>
-          <h3>3. Report to one console</h3>
-          <p>Every event lands in a central console with user, app and data type, ready for audit and your SIEM.</p>
+    <section class="band">
+      <div class="wrap band-inner">
+        <span class="kicker kicker-deep">How it works</span>
+        <h2 class="band-title">Inspect at the keyboard. Decide by policy. See it all centrally.</h2>
+        <div class="steps">
+          <div class="step"><i class="ph ph-scan" aria-hidden="true"></i><h3>1. Inspect in the browser</h3><p>The extension reads prompts, pastes and uploads on AI sites the moment they happen, before anything is submitted.</p></div>
+          <div class="step"><i class="ph ph-hand-palm" aria-hidden="true"></i><h3>2. Enforce the right action</h3><p>Block, redact, warn with a reason, or allow and log. Per data type, per team, per AI app.</p></div>
+          <div class="step"><i class="ph ph-chart-line-up" aria-hidden="true"></i><h3>3. Report to one console</h3><p>Every event lands in a central console with user, app and data type, ready for audit and your SIEM.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Central policy -->
-    <section id="policy" class="dark">
-      <div class="wrap policy">
-        <div class="policy-copy">
-          <span class="eyebrow eyebrow-accent">Centralized policy</span>
-          <h2>One rulebook. Every browser.</h2>
-          <p class="sub sub-dark">Write a policy once in the Veil console and it reaches every managed browser. Scope rules by group from your identity provider, by AI app, and by data type.</p>
+    <div class="wrap">
+      <!-- Detection -->
+      <section id="detection" class="section detection">
+        <div class="section-head">
+          <span class="kicker">What Veil catches</span>
+          <h2 class="title-lg">Everything that shouldn't end up in a prompt.</h2>
+          <p class="body">Veil inspects typed text, pastes and file uploads in real time, with detectors tuned for the data that actually leaks into AI.</p>
+        </div>
+        <div class="detector"><div class="det-name"><span class="det-num">01</span><h3>Secrets &amp; API keys</h3></div><div class="det-copy"><p class="body">Cloud keys, tokens, private keys and connection strings, caught by pattern and entropy.</p><code>sk_live_••••••••</code></div></div>
+        <div class="detector"><div class="det-name"><span class="det-num">02</span><h3>Credentials</h3></div><div class="det-copy"><p class="body">Passwords, session cookies and auth headers pasted while debugging.</p><code>Authorization: Bearer ••••</code></div></div>
+        <div class="detector"><div class="det-name"><span class="det-num">03</span><h3>Source code</h3></div><div class="det-copy"><p class="body">Proprietary code from your repositories, recognised even when it's only a fragment.</p><code>repo: billing-core</code></div></div>
+        <div class="detector"><div class="det-name"><span class="det-num">04</span><h3>Personal data (PII)</h3></div><div class="det-copy"><p class="body">Names, emails, phone numbers, national IDs and addresses of customers and staff.</p><code>+91 98•• •• ••21</code></div></div>
+        <div class="detector"><div class="det-name"><span class="det-num">05</span><h3>Financial &amp; health records</h3></div><div class="det-copy"><p class="body">Card numbers, bank details and patient data covered by PCI and HIPAA rules.</p><code>4111 •••• •••• 1111</code></div></div>
+        <div class="detector"><div class="det-name"><span class="det-num">06</span><h3>Your own identifiers</h3></div><div class="det-copy"><p class="body">Project codenames, customer lists, deal terms. Add custom dictionaries and patterns.</p><code>Project ORCHID</code></div></div>
+      </section>
+
+      <!-- Policies -->
+      <section id="policies" class="section split">
+        <div class="split-copy">
+          <span class="kicker">Policy engine</span>
+          <h2 class="title-md">One rulebook. Every browser.</h2>
+          <p class="body">Write a policy once in the Veil console and it reaches every managed browser. Scope rules by group from your identity provider, by AI app, and by data type.</p>
           <ul class="checks">
-            <li>Sanctioned vs. unsanctioned AI apps, per team</li>
-            <li>Just-in-time coaching that explains why a prompt was held</li>
-            <li>Exception requests with a business justification</li>
-            <li>Shadow AI discovery across the whole fleet</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>Sanctioned vs. unsanctioned AI apps, per team</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>Just-in-time coaching that explains why a prompt was held</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>Exception requests with a business justification</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>Shadow AI discovery across the whole fleet</li>
           </ul>
         </div>
+        <div class="rules">
+          <div class="rules-head"><span>Policies · All groups</span><span class="tag tag-accent">v42 · pushed just now</span></div>
+          <div class="rule"><div><span>Internal source code → any AI</span><span class="sub">Engineering</span></div><span class="rule-act"><i class="ph ph-prohibit" aria-hidden="true"></i>Block</span></div>
+          <div class="rule"><div><span>Secrets &amp; credentials</span><span class="sub">Everyone</span></div><span class="rule-act"><i class="ph ph-eye-slash" aria-hidden="true"></i>Redact</span></div>
+          <div class="rule"><div><span>Customer PII → unsanctioned apps</span><span class="sub">Support, Sales</span></div><span class="rule-act"><i class="ph ph-eye-slash" aria-hidden="true"></i>Redact</span></div>
+          <div class="rule"><div><span>File uploads with financials</span><span class="sub">Finance</span></div><span class="rule-act"><i class="ph ph-warning" aria-hidden="true"></i>Warn</span></div>
+          <div class="rule"><div><span>Everything else</span><span class="sub">Everyone</span></div><span class="rule-act"><i class="ph ph-note-pencil" aria-hidden="true"></i>Allow + log</span></div>
+        </div>
+      </section>
 
-        <div class="console" aria-label="Example policy list in the Veil console">
-          <div class="console-head">
-            <span class="console-title">Policies</span>
-            <div class="console-tools"><span class="tag-dim">All groups</span><span class="tag-accent">+ New rule</span></div>
+      <!-- Shadow AI -->
+      <section id="shadow-ai" class="section split">
+        <div class="split-copy">
+          <span class="kicker">Shadow AI</span>
+          <h2 class="title-md">Find the AI tools nobody approved.</h2>
+          <p class="body">Veil maps every AI app used in your organisation: who uses it, how often, and what kind of data goes in. Then you can sanction, restrict or block it.</p>
+        </div>
+        <div class="apps">
+          <div class="app"><i class="ph ph-file-pdf" aria-hidden="true"></i><div><span>Free PDF summarizer</span><span class="sub">38 users · documents uploaded</span></div><span class="tag tag-accent">Unsanctioned</span></div>
+          <div class="app"><i class="ph ph-puzzle-piece" aria-hidden="true"></i><div><span>AI note-taker extension</span><span class="sub">12 users · meeting transcripts</span></div><span class="tag tag-outline">Review</span></div>
+          <div class="app"><i class="ph ph-check-circle" aria-hidden="true"></i><div><span>Company AI assistant</span><span class="sub">640 users · all data types</span></div><span class="tag tag-neutral">Sanctioned</span></div>
+        </div>
+      </section>
+
+      <!-- Console -->
+      <section id="console" class="section console-section">
+        <div class="section-head">
+          <span class="kicker">Central console</span>
+          <h2 class="title-md">See what's leaving, who's sending it, and where.</h2>
+          <p class="body">A live feed of every detection across your fleet. Filter by team, tool or data type, approve exceptions, and export to your SIEM. Matched values are stored as fingerprints, never in the clear.</p>
+        </div>
+        <figure class="console">
+          <div class="console-scroll">
+            <div class="console-grid">
+              <aside class="console-nav">
+                <span class="console-brand"><i class="ph ph-shield-check" aria-hidden="true"></i>Veil Console</span>
+                <span class="cn is-on"><i class="ph ph-squares-four" aria-hidden="true"></i><span>Overview</span></span>
+                <span class="cn"><i class="ph ph-list-bullets" aria-hidden="true"></i><span>Events</span></span>
+                <span class="cn"><i class="ph ph-sliders-horizontal" aria-hidden="true"></i><span>Policies</span></span>
+                <span class="cn"><i class="ph ph-binoculars" aria-hidden="true"></i><span>Shadow AI</span><b>3</b></span>
+                <span class="cn"><i class="ph ph-hand-palm" aria-hidden="true"></i><span>Exceptions</span><b>7</b></span>
+                <span class="cn"><i class="ph ph-users" aria-hidden="true"></i><span>Users &amp; groups</span></span>
+                <span class="cn"><i class="ph ph-gear-six" aria-hidden="true"></i><span>Settings</span></span>
+                <div class="console-status"><span><span class="live-dot"></span>2,418 browsers online</span><span>Policy v42 · in sync</span></div>
+              </aside>
+              <div class="console-main">
+                <div class="console-top">
+                  <div class="console-title"><span>Overview</span><span class="sub">All groups · all AI apps</span></div>
+                  <div class="seg" role="group" aria-label="Time range">
+                    <button type="button" class="seg-opt" data-range="24h" aria-pressed="false">24h</button>
+                    <button type="button" class="seg-opt is-on" data-range="7d" aria-pressed="true">7d</button>
+                    <button type="button" class="seg-opt" data-range="30d" aria-pressed="false">30d</button>
+                  </div>
+                  <button type="button" class="btn btn-secondary btn-sm"><i class="ph ph-export" aria-hidden="true"></i>Export to SIEM</button>
+                </div>
+                <div class="kpis" id="kpis"></div>
+                <div class="panels">
+                  <div class="panel">
+                    <div class="panel-head"><span>Detections over time</span><span class="legend"><span class="sw sw-hard"></span>Blocked</span><span class="legend"><span class="sw sw-soft"></span>Redacted / warned</span></div>
+                    <div class="bars" id="bars"></div>
+                    <div class="axis"><span id="axis-start">Mon</span><span id="axis-end">Sun</span></div>
+                  </div>
+                  <div class="panel">
+                    <span class="panel-title">By data type</span>
+                    <div class="meter"><div class="meter-row"><span>Secrets &amp; API keys</span><span>38%</span></div><div class="meter-track"><div style="width:100%"></div></div></div>
+                    <div class="meter"><div class="meter-row"><span>Personal data</span><span>27%</span></div><div class="meter-track"><div style="width:71%"></div></div></div>
+                    <div class="meter"><div class="meter-row"><span>Source code</span><span>19%</span></div><div class="meter-track"><div style="width:50%"></div></div></div>
+                    <div class="meter"><div class="meter-row"><span>Credentials</span><span>10%</span></div><div class="meter-track"><div style="width:26%"></div></div></div>
+                    <div class="meter"><div class="meter-row"><span>Custom identifiers</span><span>6%</span></div><div class="meter-track"><div style="width:16%"></div></div></div>
+                  </div>
+                  <div class="panel">
+                    <span class="panel-title">Top AI apps</span>
+                    <div class="top-app"><span>ChatGPT</span><span class="num">1,204</span><span class="tag tag-neutral">Sanctioned</span></div>
+                    <div class="top-app"><span>Copilot</span><span class="num">862</span><span class="tag tag-neutral">Sanctioned</span></div>
+                    <div class="top-app"><span>Claude</span><span class="num">410</span><span class="tag tag-neutral">Sanctioned</span></div>
+                    <div class="top-app"><span>Free PDF summarizer</span><span class="num">38</span><span class="tag tag-accent">Blocked</span></div>
+                    <div class="top-app"><span>AI note-taker ext.</span><span class="num">12</span><span class="tag tag-outline">Review</span></div>
+                  </div>
+                </div>
+                <div class="events-head"><span>Recent events</span><span class="tag tag-accent">All data types</span><span class="tag tag-neutral">All teams</span></div>
+                <table class="table">
+                  <thead><tr><th>Time</th><th>User</th><th>Destination</th><th>Detection</th><th>Outcome</th></tr></thead>
+                  <tbody>
+                    <tr><td class="dim">14:02</td><td>j.chen · Platform</td><td class="mono">chat.ai-assistant.com</td><td>AWS access key</td><td><span class="tag tag-accent">Blocked</span></td></tr>
+                    <tr><td class="dim">13:47</td><td>r.okafor · Support</td><td class="mono">notes.ai-writer.io</td><td>PII · email, phone</td><td><span class="tag tag-outline">Redacted</span></td></tr>
+                    <tr><td class="dim">13:31</td><td>m.silva · Payments</td><td class="mono">code.copilot-x.dev</td><td>Internal source</td><td><span class="tag tag-neutral">Warned · sent with reason</span></td></tr>
+                    <tr><td class="dim">12:58</td><td>a.novak · Finance</td><td class="mono">drive.share-docs.com</td><td>Confidential file</td><td><span class="tag tag-accent">Blocked</span></td></tr>
+                    <tr><td class="dim">12:20</td><td>k.patel · Data</td><td class="mono">chat.ai-assistant.com</td><td>Customer list (custom)</td><td><span class="tag tag-neutral">Exception requested</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-          <div class="row row-head"><span>Rule</span><span>Applies to</span><span>Action</span></div>
-          <div class="row"><span>Internal source code → any AI</span><span class="muted">Engineering</span><span class="act act-block">BLOCK</span></div>
-          <div class="row"><span>Secrets &amp; credentials</span><span class="muted">Everyone</span><span class="act act-redact">REDACT</span></div>
-          <div class="row"><span>Customer PII → unsanctioned apps</span><span class="muted">Support, Sales</span><span class="act act-redact">REDACT</span></div>
-          <div class="row"><span>File uploads with financials</span><span class="muted">Finance</span><span class="act act-warn">WARN</span></div>
-          <div class="row"><span>Everything else</span><span class="muted">Everyone</span><span class="act act-allow">ALLOW + LOG</span></div>
-          <div class="console-foot"><span>Last pushed to all browsers · just now</span><span class="mono">v42</span></div>
-        </div>
-      </div>
-    </section>
+          <figcaption>Illustrative console with sample data.</figcaption>
+        </figure>
+      </section>
 
-    <!-- Shadow AI + deployment -->
-    <section id="deploy" class="wrap section duo">
-      <div class="panel">
-        <span class="eyebrow">Shadow AI</span>
-        <h3 class="panel-title">Find the AI tools nobody approved.</h3>
-        <p>Veil maps every AI app used in your organisation: who uses it, how often, and what kind of data goes in. Then you can sanction, restrict or block it.</p>
-        <div class="app-list">
-          <div><span>Free PDF summarizer</span><span class="status status-bad">UNSANCTIONED</span></div>
-          <div><span>AI note-taker extension</span><span class="status status-review">REVIEW</span></div>
-          <div><span>Company AI assistant</span><span class="status status-ok">SANCTIONED</span></div>
+      <!-- Deployment -->
+      <section id="deploy" class="section split split-top">
+        <div class="split-copy">
+          <span class="kicker">Deployment</span>
+          <h2 class="title-md">Live in an afternoon. Hosted where you need it.</h2>
+          <p class="body">Push the extension through your existing MDM or group policy. Run the console as SaaS, or self-host it inside your own network when data must never leave.</p>
+          <div class="pills"><span class="tag tag-outline">SSO</span><span class="tag tag-outline">SIEM export</span><span class="tag tag-outline">Audit log</span><span class="tag tag-outline">Air-gapped option</span></div>
         </div>
-      </div>
-      <div class="panel">
-        <span class="eyebrow">Deployment</span>
-        <h3 class="panel-title">Live in an afternoon. Hosted where you need it.</h3>
-        <p>Push the extension through your existing MDM or group policy. Run the console as SaaS, or self-host it inside your own network when data must never leave.</p>
         <div class="modes">
-          <div class="mode"><strong>SaaS</strong><span>Managed by us, updated continuously.</span></div>
-          <div class="mode mode-dark"><strong>Self-hosted</strong><span>Your cloud or on-prem. Your keys.</span></div>
+          <div class="mode"><i class="ph ph-cloud" aria-hidden="true"></i><h3>SaaS</h3><p>Managed by us, updated continuously.</p></div>
+          <div class="mode"><i class="ph ph-buildings" aria-hidden="true"></i><h3>Self-hosted</h3><p>Your cloud or on-prem. Your keys.</p></div>
         </div>
-        <div class="pills"><span>SSO</span><span>SIEM export</span><span>Audit log</span><span>Air-gapped option</span></div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="wrap section section-tight-top">
-      <div class="split-head">
-        <h2>Start free. Then take control.</h2>
-        <p class="sub">Priced per user per year. Every plan runs as SaaS or self-hosted.</p>
-      </div>
-      <div class="plans">
-        <article class="plan">
-          <h3>Discover</h3>
-          <p class="price">Free assessment</p>
-          <p>Two weeks in audit-only mode, ending with a report on how your people use AI.</p>
-          <ul><li>Shadow AI discovery</li><li>AI extension inventory</li><li>AI app risk scoring</li><li>Exposure report</li></ul>
-          <a class="btn btn-outline" href="#demo">Start an assessment</a>
-        </article>
-        <article class="plan plan-dark">
-          <h3>Protect</h3>
-          <p class="price">Contact us</p>
-          <p>Stop sensitive data at the prompt without slowing anyone down.</p>
-          <ul><li>Everything in Discover</li><li>Inspection of prompts, pastes and uploads</li><li>Redact, warn, block and coach</li><li>Central policies and SIEM export</li></ul>
-          <a class="btn btn-accent" href="#demo">Book a demo</a>
-        </article>
-        <article class="plan">
-          <h3>Govern</h3>
-          <p class="price">Contact us</p>
-          <p>Deeper inspection and evidence for regulated teams.</p>
-          <ul><li>Everything in Protect</li><li>File content inspection</li><li>Exact data match</li><li>Compliance reporting</li></ul>
-          <a class="btn btn-outline" href="#demo">Book a demo</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section id="demo" class="wrap cta-wrap">
-      <div class="cta">
-        <div class="cta-copy">
-          <h2>Say yes to AI. Keep your data behind the veil.</h2>
-          <p>See Veil catch a live leak in a 20-minute demo, or roll it out to a pilot group.</p>
+      <!-- FAQ -->
+      <section id="faq" class="section split split-top">
+        <div class="split-copy">
+          <span class="kicker">FAQ</span>
+          <h2 class="title-sm">Questions security teams ask first</h2>
         </div>
-        <form class="cta-form" id="demo-form" novalidate>
-          <label for="veil-email">Work email</label>
-          <div class="cta-field">
-            <input id="veil-email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
-            <button type="submit" class="btn btn-dark">Book a demo</button>
+        <div class="faq" id="faq-list">
+          <div class="faq-item">
+            <button type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1"><span>Does prompt content ever leave the browser?</span><i class="ph ph-minus" aria-hidden="true"></i></button>
+            <p id="faq-a1">No. Detection runs locally in the extension. The console receives event metadata and a one-way fingerprint of the match, never the original text or file.</p>
           </div>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <div class="footer-brand">
-        <div class="brand">
-          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="6" fill="#121314"/><rect x="6" y="9" width="16" height="3" rx="1.5" fill="#FF6A3D"/><rect x="6" y="16" width="10" height="3" rx="1.5" fill="#F3F2EC"/></svg>
-          <span>Veil</span>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a2"><span>Which browsers are supported?</span><i class="ph ph-plus" aria-hidden="true"></i></button>
+            <p id="faq-a2" hidden>Chrome and Edge, deployed through your existing MDM or group policy.</p>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a3"><span>Can we self-host the console?</span><i class="ph ph-plus" aria-hidden="true"></i></button>
+            <p id="faq-a3" hidden>Yes. Run it as SaaS, or self-host in your own cloud or on-prem with your own keys. An air-gapped option is available.</p>
+          </div>
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls="faq-a4"><span>Will it slow people down?</span><i class="ph ph-plus" aria-hidden="true"></i></button>
+            <p id="faq-a4" hidden>Inspection happens as content is entered and adds no noticeable delay. Start in audit-only mode to tune policies before anyone sees a prompt.</p>
+          </div>
         </div>
-        <p>AI data leak prevention for the browser.</p>
-      </div>
-      <div class="footer-cols">
-        <div><span>Product</span><a href="#detect">Detection</a><a href="#policy">Policies</a><a href="#deploy">Deployment</a><a href="#pricing">Pricing</a></div>
-        <div><span>Company</span><a href="#demo">Contact</a></div>
-      </div>
+      </section>
+
+      <!-- Early access -->
+      <section id="access" class="section split split-top access">
+        <div class="split-copy">
+          <span class="kicker">Early access</span>
+          <h2 class="title-lg"><span>Say yes to AI.</span><span>Keep your data behind the veil.</span></h2>
+          <p class="body">We're onboarding a small group of security teams for early access. Start with a two-week audit-only assessment and a report on how your people use AI, then roll out protection to a pilot group.</p>
+          <ul class="checks">
+            <li><i class="ph ph-check" aria-hidden="true"></i>Free two-week Shadow AI assessment</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>Audit-only mode first, no disruption</li>
+            <li><i class="ph ph-check" aria-hidden="true"></i>We reply within two business days</li>
+          </ul>
+        </div>
+        <div class="form-card">
+          <div class="done" id="form-done" hidden>
+            <i class="ph ph-check-circle" aria-hidden="true"></i>
+            <h3>You're on the list.</h3>
+            <p class="body" id="done-text"></p>
+            <button type="button" class="btn btn-ghost" id="form-reset">Submit another request</button>
+          </div>
+          <form id="access-form" novalidate>
+            <div class="fields">
+              <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" class="input" autocomplete="name" placeholder="Alex Morgan"></div>
+              <div class="field"><label for="f-email">Work email *</label><input id="f-email" name="email" class="input" type="email" autocomplete="email" placeholder="alex@company.com" required></div>
+              <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" class="input" autocomplete="organization" placeholder="Company name"></div>
+              <div class="field"><label for="f-role">Role</label><input id="f-role" name="role" class="input" autocomplete="organization-title" placeholder="e.g. Head of Security"></div>
+            </div>
+            <span class="field-error" id="email-error" hidden>Enter a valid work email.</span>
+            <div class="field">
+              <span class="field-label" id="size-label">Company size</span>
+              <div class="seg seg-full" role="group" aria-labelledby="size-label" id="size-opts">
+                <button type="button" class="seg-opt" data-size="1–50" aria-pressed="false">1–50</button>
+                <button type="button" class="seg-opt" data-size="51–500" aria-pressed="false">51–500</button>
+                <button type="button" class="seg-opt" data-size="501–5k" aria-pressed="false">501–5k</button>
+                <button type="button" class="seg-opt" data-size="5k+" aria-pressed="false">5k+</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field-label" id="tools-label">AI tools your team uses</span>
+              <div class="tool-opts" role="group" aria-labelledby="tools-label" id="tool-opts">
+                <button type="button" class="btn chip-btn" aria-pressed="false">ChatGPT</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Claude</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Gemini</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Copilot</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Cursor</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Internal LLM</button>
+                <button type="button" class="btn chip-btn" aria-pressed="false">Other</button>
+              </div>
+            </div>
+            <div class="field"><label for="f-notes">What are you trying to protect?</label><textarea id="f-notes" name="notes" class="input" placeholder="Optional: data types, rollout size, timelines"></textarea></div>
+            <button type="submit" class="btn btn-primary btn-submit">Request early access</button>
+            <span class="fine" id="form-status" role="status" aria-live="polite">We only use this to contact you about Veil.</span>
+          </form>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span><i class="ph ph-shield-check" aria-hidden="true"></i>Veil AI Security</span>
+        <span>© <span id="year">2026</span> Nectral. All rights reserved.</span>
+      </footer>
     </div>
-    <div class="wrap copy">© <span id="year">2026</span> Nectral. All rights reserved.</div>
-  </footer>
+  </main>
 
   <script src="main.js" defer></script>
 </body>
